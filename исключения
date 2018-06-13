@@ -1,0 +1,33 @@
+Не обрабатываем исключения – нужно пробросить их дальше, тому, кто знает как
+public static void method2() throws FileNotFoundException, ClassNotFoundException
+{
+    method1();
+}
+Обрабатываем одно исключение, второе – пробрасываем:
+public static void method3() throws ClassNotFoundException
+{
+    try
+    {
+        method1();
+    }
+    catch (FileNotFoundException e)
+    {
+        System.out.println("FileNotFoundException has been caught.");
+    }
+}
+Перехватываем оба – ничего не пробрасываем:
+public static void method4()
+{
+    try
+    {
+        method1();
+    }
+    catch (FileNotFoundException e)
+    {
+        System.out.println("FileNotFoundException has been caught.");
+    }
+    catch (ClassNotFoundException e)
+    {
+        System.out.println("ClassNotFoundException has been caught.");
+    }
+}
